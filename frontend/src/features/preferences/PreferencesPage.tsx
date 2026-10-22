@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useTheme } from '../theme/ThemeProvider';
-import { Preferences } from '../types';
-import { playReminderChime } from '../features/reminders/alerts/sound';
-import { getDataStore } from '../data/dataProvider';
+import { useTheme } from '../../theme/ThemeProvider';
+import { Preferences } from '../../types';
+import { playReminderChime } from '../reminders/alerts/sound';
+import { getDataStore } from '../../data/dataProvider';
 
 export const PreferencesPage: React.FC = () => {
   const { theme, textSize, simpleLanguage, setTheme, setTextSize, setSimpleLanguage } = useTheme();

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { LogCategory, NewHealthLog } from '../../types';
 import { getDataStore } from '../../data/dataProvider';
-import { getTodayDateString } from '../../lib/time';
 
 interface QuickAddLogProps {
   onLogAdded: () => void;

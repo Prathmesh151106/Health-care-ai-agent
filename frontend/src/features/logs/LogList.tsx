@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HealthLog, LogCategory } from '../../types';
+import { HealthLog } from '../../types';
 import { getDataStore } from '../../data/dataProvider';
 import { formatDateTime } from '../../lib/time';
 
