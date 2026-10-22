@@ -21,7 +21,7 @@ logger.info('CORS allow-list configured', {
 });
 
 export const corsMiddleware = cors({
-  origin: (origin, callback) => {
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
     // Allow requests with no origin (e.g. server-to-server, curl during dev)
     if (!origin) {
       callback(null, true);

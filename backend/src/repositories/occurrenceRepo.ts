@@ -58,7 +58,7 @@ export async function fetchAndMarkDue(
 
   if (result.rows.length === 0) return [];
 
-  const ids = result.rows.map((r) => r.id);
+  const ids = result.rows.map((r: ReminderOccurrence) => r.id);
   await client.query(
     `UPDATE reminder_occurrences SET last_alerted_at = $1
      WHERE id = ANY($2::uuid[])`,
