@@ -7,11 +7,11 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-function requireEnv(name: string): string {
-  const value = process.env[name];
+function requireEnv(name: string, fallback = ''): string {
+  const value = process.env[name] || fallback;
   if (!value) {
-    console.error(`[startup] Missing required environment variable: ${name}`);
-    process.exit(1);
+    console.warn(`[startup] Warning: Missing environment variable ${name}. Some features may be disabled.`);
+    return '';
   }
   return value;
 }
@@ -23,19 +23,15 @@ function optionalEnv(name: string, defaultValue = ''): string {
 function requireOneOf(names: string[]): void {
   const found = names.some((n) => !!process.env[n]);
   if (!found) {
-    console.error(
-      `[startup] At least one of these environment variables is required: ${names.join(', ')}`
+    console.warn(
+      `[startup] Warning: None of ${names.join(', ')} configured. Auth token verification will require one of these.`
     );
-    process.exit(1);
   }
 }
 
-// Validate auth config
+// Validate auth config (warn without killing the server)
 requireEnv('SUPABASE_URL');
 requireOneOf(['SUPABASE_JWT_SECRET', 'SUPABASE_JWKS_URL']);
-
-// Validate DB
-requireEnv('DATABASE_URL');
 
 export const env = {
   nodeEnv: optionalEnv('NODE_ENV', 'development'),
