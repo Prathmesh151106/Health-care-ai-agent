@@ -6,7 +6,6 @@ A responsive web app that helps people managing ongoing health conditions (for e
 > This project is **not** claimed to be HIPAA-compliant or production-ready. A qualified security, privacy, and compliance review is required before it is used with real patient data.
 Status: Prototype (PRD v1.0, 22 October 2026)
 For system design details, see `ARCHITECTURE.md`.
----
 Table of contents
 Features
 Prerequisites
